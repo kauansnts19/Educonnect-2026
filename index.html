@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduConnect</title>
+  <link rel="stylesheet" href="style.css">
+  <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="EduConnect - Conectando alunos, professores e escolas em um só lugar. Aplicativo educacional criado por alunos do Colégio Estadual Marechal Costa e Silva." />
@@ -333,5 +340,232 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   <!-- Main Script -->
   <script src="script.js"></script>
+</body>
+</html>
+  <!-- Ícones Lucide -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Fonte Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- PWA CONFIGURAÇÃO -->
+  <link rel="manifest" href="https://eduplay-guide-55733.lovable.app">
+  <link rel="icon" href="https://eduplay-guide-55733.lovable.app/icon-192x192.png">
+  <meta name="theme-color" content="#4A90E2">
+</head>
+
+<body>
+
+  <!-- Navegação -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <img src="imagens/WhatsApp_Image_2025-11-13_at_17.32.03-removebg-preview.png" alt="Logo EduConnect">
+        EduConnect
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="#sobre"><i data-lucide="book-open"></i>Sobre</a></li>
+        <li><a href="#galeria"><i data-lucide="image"></i>Galeria</a></li>
+        <li><a href="mailto:2ceduconnect@gmail.com"><i data-lucide="mail"></i>Contato</a></li>
+
+        <li>
+          <button id="theme-toggle" title="Alternar modo escuro">
+            <i data-lucide="sun" class="theme-icon"></i>
+          </button>
+        </li>
+
+        <li>
+          <button id="install-btn" class="download-btn">
+            <i data-lucide="download" class="download-icon"></i>
+            <span class="download-text">Instalar App</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Bem-vindo ao EduConnect</h1>
+      <p>Conectando alunos, professores e escolas em um só lugar.</p>
+      <a href="#sobre" class="btn">Saiba Mais</a>
+    </div>
+  </section>
+
+  <!-- Sobre -->
+  <section id="sobre" class="sobre">
+    <h2>Nossa História</h2>
+    <p>
+      O <strong>EduConnect</strong> nasceu em 2025, criado por um grupo de estudantes do 2°Ano do Colégio Estadual Marechal Costa e Silva,
+      atuando no curso de Técnico e Desenvolvimento de Sistema em aprendizado.
+      A missão do aplicativo é facilitar a comunicação entre pais, professores e alunos,
+      promovendo um ambiente colaborativo e acessível para todos.
+    </p>
+  </section>
+
+  <!-- Galeria -->
+  <section id="galeria" class="galeria">
+    <h2 class="titulo-galeria">Galeria</h2>
+
+    <div class="galeria-container">
+
+      <!-- Funcionalidades -->
+      <div class="app-info">
+        <h3>Funcionalidades Principais</h3>
+        <div class="bloco">
+          <p>Gestão completa de atividades e tarefas escolares</p>
+          <p>Comunicação direta com professores via chat inteligente</p>
+          <p>Minijogos educativos para tornar o aprendizado divertido</p>
+          <p>Apoio psicológico com recursos de bem-estar mental</p>
+          <p>Acompanhamento de desempenho e evolução acadêmica</p>
+        </div>
+      </div>
+
+      <!-- Carrossel -->
+      <div class="carousel">
+        <div class="carousel-track">
+          <div class="carousel-item">
+            <img src="imagens/IMG-20251104-WA0012 (1).jpg" alt="Imagem 1">
+          </div>
+          <div class="carousel-item">
+            <img src="imagens/IMG-20251029-WA0011.jpg" alt="Imagem 2">
+          </div>
+          <div class="carousel-item">
+            <img src="imagens/foto_redimensionada_1600x1200.jpg" alt="Imagem 3">
+          </div>
+        </div>
+      </div>
+
+      <!-- MOCKUP FINAL (fino + câmera discreta) -->
+      <div class="video-section">
+        <h3 class="video-title">Veja o App em Ação</h3>
+
+        <div class="phone-mockup">
+          <video autoplay muted loop playsinline preload="auto" class="screen-video">
+            <source src="videos/WhatsApp Video 2025-11-13 at 20.18.50.mp4" type="video/mp4">
+            Seu navegador não suporta vídeo.
+          </video>
+          <div class="home-bar"></div>
+        </div>
+      </div>
+
+      <div class="break"></div>
+
+      <!-- Brainstorm -->
+      <div class="app-info">
+        <h3>Brainstorm</h3>
+        <div class="bloco">
+          <p> Onde a equipe reuniu várias ideias sobre o aplicativo. Em seguida, fizemos uma reunião de decisão, selecionando as ideias viáveis e definindo como o app ficaria no protótipo. Essa fase serviu para organizar o conceito inicial do projeto.</p>
+        </div>
+      </div>
+
+      <!-- Desenvolvimento -->
+      <div class="app-info">
+        <h3>Desenvolvimento</h3>
+        <div class="bloco">
+          <p>Durante a etapa de desenvolvimento, a equipe foi dividida em dois grupos: um focado no aplicativo e outro no site. Nessa fase, iniciamos a construção do site e também criamos os elementos gráficos do app, como logo e slogan. Esse processo foi essencial para organizar o conceito geral do projeto e direcionar sua identidade visual e funcional.</p>
+        </div>
+      </div>
+
+      <!-- Documentação -->
+      <div class="app-info">
+        <h3>Documentação</h3>
+        <div class="bloco">
+          <p>O grupo EduConnect se reuniu para organizar e desenvolver dois materiais essenciais do projeto: o banner e a documentação oficial. Durante o encontro, cada integrante colaborou com ideias e sugestões, definindo o design, o conteúdo e a estrutura do banner, além de revisar e aperfeiçoar as informações da documentação. A reunião foi produtiva, alinhando funções e garantindo que todos contribuíssem para a apresentação final do projeto.</p>
+        </div>
+      </div>
+
+      <!-- Finalização -->
+      <div class="app-info">
+        <h3>Finalização</h3>
+        <div class="bloco">
+          <p>chegamos ao protótipo final do aplicativo. A equipe se reuniu novamente para organizar uma amostra prática, permitindo que as pessoas interagissem com o app. Essa etapa serviu para apresentar o funcionamento final e validar a experiência dos usuários.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <footer>
+    <p>© 2026 EduConnect. Todos os direitos reservados aos alunos do 2ºC Desenvolvimento De Sistemas.</p>
+  </footer>
+
+  <!-- Scripts (100% originais) -->
+  <script>
+    const track = document.querySelector('.carousel-track');
+    const items = document.querySelectorAll('.carousel-item');
+    let index = 0;
+    function slideCarousel() {
+      index = (index + 1) % items.length;
+      track.style.transform = `translateX(-${index * 100}%)`;
+    }
+    window.addEventListener('load', () => setInterval(slideCarousel, 3000));
+  </script>
+
+  <script>
+    const toggle = document.getElementById('theme-toggle');
+    const body = document.body;
+    const themeIcon = document.querySelector('.theme-icon');
+    const downloadIcon = document.querySelector('.download-icon');
+
+    function updateDownloadIcon() {
+      downloadIcon.style.color = body.classList.contains('dark-mode') ? '#fff' : '#000';
+    }
+    function updateThemeIcon() {
+      const isDark = body.classList.contains('dark-mode');
+      themeIcon.setAttribute('data-lucide', isDark ? 'moon' : 'sun');
+      lucide.createIcons();
+    }
+    if (localStorage.getItem('theme') === 'dark') body.classList.add('dark-mode');
+    updateThemeIcon(); updateDownloadIcon();
+
+    toggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
+      updateThemeIcon(); updateDownloadIcon();
+    });
+  </script>
+
+  <script>
+    let installPrompt = null;
+    const installBtn = document.getElementById('install-btn');
+    const textSpan = installBtn.querySelector('.download-text');
+    const icon = installBtn.querySelector('.download-icon');
+
+    window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); installPrompt = e; });
+
+    installBtn.addEventListener('click', async () => {
+      if (installPrompt) {
+        textSpan.textContent = 'Instalando...'; icon.setAttribute('data-lucide', 'loader'); lucide.createIcons();
+        installPrompt.prompt();
+        const { outcome } = await installPrompt.userChoice;
+        if (outcome === 'accepted') {
+          textSpan.textContent = 'Instalado!';
+          setTimeout(() => installBtn.style.display = 'none', 1500);
+        } else {
+          textSpan.textContent = 'Instalar App'; icon.setAttribute('data-lucide', 'download'); lucide.createIcons();
+        }
+        installPrompt = null;
+      } else {
+        textSpan.textContent = 'Abrindo App...'; icon.setAttribute('data-lucide', 'external-link'); lucide.createIcons();
+        window.open('https://eduplay-guide-55733.lovable.app', '_blank');
+        setTimeout(() => { textSpan.textContent = 'Instalar App'; icon.setAttribute('data-lucide', 'download'); lucide.createIcons(); }, 2000);
+      }
+    });
+
+    window.addEventListener('appinstalled', () => installBtn.style.display = 'none');
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('https://eduplay-guide-55733.lovable.app/service-worker.js').catch(() => {});
+      });
+    }
+  </script>
+
+  <script>lucide.createIcons();</script>
+
 </body>
 </html>
