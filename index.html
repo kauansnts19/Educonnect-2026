@@ -5,7 +5,343 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EduConnect</title>
   <link rel="stylesheet" href="style.css">
-  
+  <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="EduConnect - Conectando alunos, professores e escolas em um só lugar. Aplicativo educacional criado por alunos do Colégio Estadual Marechal Costa e Silva." />
+  <meta name="theme-color" content="#4A90E2" />
+  <title>EduConnect | Conectando a Educação</title>
+
+  <!-- Google Fonts - Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="assets/logo-icon.png" />
+</head>
+<body>
+  <!-- ========== HEADER / NAVBAR ========== -->
+  <header class="header" id="header">
+    <nav class="navbar container">
+      <a href="#hero" class="logo" aria-label="EduConnect - Página inicial">
+        <div class="logo-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="48" height="48" rx="12" fill="url(#logoGrad)"/>
+            <path d="M14 18h20M14 24h14M14 30h18" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="34" cy="18" r="3" fill="white"/>
+            <defs>
+              <linearGradient id="logoGrad" x1="0" y1="0" x2="48" y2="48">
+                <stop stop-color="#4A90E2"/>
+                <stop offset="1" stop-color="#8B5CF6"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span class="logo-text">EduConnect</span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li>
+          <a href="#sobre" class="nav-link">
+            <i data-lucide="info"></i>
+            <span>Sobre</span>
+          </a>
+        </li>
+        <li>
+          <a href="#galeria" class="nav-link">
+            <i data-lucide="images"></i>
+            <span>Galeria</span>
+          </a>
+        </li>
+        <li>
+          <a href="mailto:2ceduconnect@gmail.com" class="nav-link">
+            <i data-lucide="mail"></i>
+            <span>Contato</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema claro/escuro">
+          <i data-lucide="sun" class="icon-sun"></i>
+          <i data-lucide="moon" class="icon-moon"></i>
+        </button>
+
+        <button class="btn-install" id="installBtn" aria-label="Instalar aplicativo EduConnect">
+          <span class="rainbow-text">Instalar App</span>
+          <i data-lucide="download"></i>
+        </button>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu de navegação" aria-expanded="false">
+          <i data-lucide="menu" class="icon-menu"></i>
+          <i data-lucide="x" class="icon-close"></i>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ========== HERO SECTION ========== -->
+    <section class="hero" id="hero">
+      <div class="hero-bg"></div>
+      <div class="container hero-content">
+        <h1 class="hero-title">Bem-vindo ao <span>EduConnect</span></h1>
+        <p class="hero-subtitle">Conectando alunos, professores e escolas em um só lugar.</p>
+        <a href="#sobre" class="btn-cta">
+          Saiba Mais
+          <i data-lucide="arrow-down"></i>
+        </a>
+      </div>
+      <div class="hero-wave">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+          <path d="M0,64 C360,120 1080,0 1440,64 L1440,120 L0,120 Z" fill="var(--bg-primary)"></path>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ========== SOBRE / NOSSA HISTÓRIA ========== -->
+    <section class="about section" id="sobre">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Nossa História</span>
+          <h2 class="section-title">Nascido da paixão pela educação</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-content">
+            <p>
+              O <strong>EduConnect</strong> nasceu em <strong>2025</strong>, criado com dedicação e criatividade por alunos do 
+              <strong>2º ano do curso Técnico em Desenvolvimento de Sistemas</strong> do 
+              <strong>Colégio Estadual Marechal Costa e Silva</strong>.
+            </p>
+            <p>
+              Motivados pela necessidade de aproximar a comunidade escolar, desenvolvemos uma plataforma completa que 
+              facilita a comunicação entre pais, professores e alunos, promovendo um ambiente colaborativo, 
+              acessível e humanizado.
+            </p>
+            <p>
+              Mais do que um aplicativo, o EduConnect é o resultado do trabalho em equipe, da busca por soluções 
+              reais e do compromisso com uma educação mais conectada e inclusiva.
+            </p>
+          </div>
+
+          <div class="about-card">
+            <div class="about-card-icon">
+              <i data-lucide="target"></i>
+            </div>
+            <h3>Nossa Missão</h3>
+            <p>
+              Facilitar a comunicação entre pais, professores e alunos, promovendo um ambiente 
+              colaborativo, acessível e focado no bem-estar e no desenvolvimento de cada estudante.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== GALERIA / FUNCIONALIDADES ========== -->
+    <section class="gallery section" id="galeria">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Funcionalidades</span>
+          <h2 class="section-title">Tudo o que você precisa em um só app</h2>
+          <p class="section-desc">Recursos pensados para tornar a experiência educacional mais completa, divertida e eficiente.</p>
+        </div>
+
+        <!-- Cards de Funcionalidades -->
+        <div class="features-grid">
+          <article class="feature-card">
+            <div class="feature-icon">
+              <i data-lucide="clipboard-list"></i>
+            </div>
+            <h3>Gestão de Atividades</h3>
+            <p>Organize e acompanhe tarefas escolares, trabalhos e provas de forma simples e intuitiva.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">
+              <i data-lucide="message-circle"></i>
+            </div>
+            <h3>Chat Inteligente</h3>
+            <p>Comunicação direta e segura com professores e colegas através de um chat moderno.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">
+              <i data-lucide="gamepad-2"></i>
+            </div>
+            <h3>Minijogos Educativos</h3>
+            <p>Aprenda brincando com jogos interativos que reforçam o conteúdo de forma divertida.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">
+              <i data-lucide="heart-handshake"></i>
+            </div>
+            <h3>Apoio Psicológico</h3>
+            <p>Recursos de bem-estar mental e apoio emocional para uma formação mais saudável.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">
+              <i data-lucide="trending-up"></i>
+            </div>
+            <h3>Acompanhamento</h3>
+            <p>Monitore o desempenho e a evolução acadêmica com relatórios claros e objetivos.</p>
+          </article>
+        </div>
+
+        <!-- Carrossel de Imagens -->
+        <div class="carousel-section">
+          <h3 class="subsection-title">Galeria do Projeto</h3>
+          <div class="carousel" id="carousel">
+            <div class="carousel-track" id="carouselTrack">
+              <div class="carousel-slide active">
+                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&q=80" alt="Alunos colaborando em projeto educacional" loading="lazy" />
+                <div class="carousel-caption">Colaboração em equipe</div>
+              </div>
+              <div class="carousel-slide">
+                <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80" alt="Desenvolvimento de software educacional" loading="lazy" />
+                <div class="carousel-caption">Desenvolvimento do app</div>
+              </div>
+              <div class="carousel-slide">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80" alt="Estudantes apresentando o projeto EduConnect" loading="lazy" />
+                <div class="carousel-caption">Apresentação final</div>
+              </div>
+            </div>
+            <div class="carousel-dots" id="carouselDots">
+              <button class="dot active" data-index="0" aria-label="Slide 1"></button>
+              <button class="dot" data-index="1" aria-label="Slide 2"></button>
+              <button class="dot" data-index="2" aria-label="Slide 3"></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mockup de Celular + Vídeo -->
+        <div class="mockup-section">
+          <h3 class="subsection-title">Veja o App em Ação</h3>
+          <div class="phone-mockup">
+            <div class="phone-frame">
+              <div class="phone-notch">
+                <div class="dynamic-island"></div>
+              </div>
+              <div class="phone-screen">
+                <video 
+                  id="appVideo"
+                  autoplay 
+                  muted 
+                  loop 
+                  playsinline
+                  poster="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&q=80"
+                >
+                  <source src="https://cdn.coverr.co/videos/coverr-students-studying-together-4584/1080p.mp4" type="video/mp4" />
+                  Seu navegador não suporta vídeo.
+                </video>
+                <div class="phone-overlay">
+                  <span class="app-badge">EduConnect</span>
+                </div>
+              </div>
+              <div class="phone-home-indicator"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Processo de Criação -->
+        <div class="process-section">
+          <h3 class="subsection-title">Processo de Criação</h3>
+          <div class="process-timeline">
+            <article class="process-card">
+              <div class="process-number">01</div>
+              <div class="process-icon">
+                <i data-lucide="lightbulb"></i>
+              </div>
+              <h4>Brainstorm</h4>
+              <p>A equipe reuniu ideias, identificou problemas reais da comunidade escolar e selecionou as soluções mais viáveis e impactantes.</p>
+            </article>
+
+            <article class="process-card">
+              <div class="process-number">02</div>
+              <div class="process-icon">
+                <i data-lucide="code-2"></i>
+              </div>
+              <h4>Desenvolvimento</h4>
+              <p>Divisão em grupos (app e site), criação da logo, slogan e identidade visual completa do projeto.</p>
+            </article>
+
+            <article class="process-card">
+              <div class="process-number">03</div>
+              <div class="process-icon">
+                <i data-lucide="file-text"></i>
+              </div>
+              <h4>Documentação</h4>
+              <p>Criação do banner oficial e documentação completa do projeto, realizada em equipe com rigor técnico.</p>
+            </article>
+
+            <article class="process-card">
+              <div class="process-number">04</div>
+              <div class="process-icon">
+                <i data-lucide="rocket"></i>
+              </div>
+              <h4>Finalização</h4>
+              <p>Protótipo finalizado, testes com usuários reais e ajustes finais para garantir a melhor experiência.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="logo">
+            <div class="logo-icon">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect width="48" height="48" rx="12" fill="url(#logoGradFooter)"/>
+                <path d="M14 18h20M14 24h14M14 30h18" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="34" cy="18" r="3" fill="white"/>
+                <defs>
+                  <linearGradient id="logoGradFooter" x1="0" y1="0" x2="48" y2="48">
+                    <stop stop-color="#4A90E2"/>
+                    <stop offset="1" stop-color="#8B5CF6"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <span class="logo-text">EduConnect</span>
+          </div>
+          <p>Conectando alunos, professores e escolas.</p>
+        </div>
+
+        <div class="footer-links">
+          <a href="#sobre">Sobre</a>
+          <a href="#galeria">Galeria</a>
+          <a href="mailto:2ceduconnect@gmail.com">Contato</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 EduConnect. Todos os direitos reservados aos alunos do 2ºC Desenvolvimento de Sistemas.</p>
+        <p class="footer-school">Colégio Estadual Marechal Costa e Silva</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Main Script -->
+  <script src="script.js"></script>
+</body>
+</html>
   <!-- Ícones Lucide -->
   <script src="https://unpkg.com/lucide@latest"></script>
 

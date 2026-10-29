@@ -1,110 +1,199 @@
-// =============================================
-// EDUCONNECT - SCRIPT.JS FINAL (PWA + BOTÃO SEMPRE VISÍVEL)
-// =============================================
+/* ============================================
+   EduConnect - Main JavaScript
+   ============================================ */
 
-// === 1. CARROSSEL AUTOMÁTICO ===
-const track = document.querySelector('.carousel-track');
-const items = document.querySelectorAll('.carousel-item');
-let index = 0;
-
-function slideCarousel() {
-  index = (index + 1) % items.length;
-  track.style.transform = `translateX(-${index * 100}%)`;
-}
-window.addEventListener('load', () => {
-  setInterval(slideCarousel, 3000);
-});
-
-// === 2. MODO ESCURO ===
-const toggle = document.getElementById('theme-toggle');
-const body = document.body;
-const themeIcon = document.querySelector('.theme-icon');
-const downloadIcon = document.querySelector('.download-icon');
-
-function updateDownloadIcon() {
-  downloadIcon.style.color = body.classList.contains('dark-mode') ? '#fff' : '#000';
-}
-
-function updateThemeIcon() {
-  const isDark = body.classList.contains('dark-mode');
-  themeIcon.setAttribute('data-lucide', isDark ? 'moon' : 'sun');
-  lucide.createIcons();
-}
-
-if (localStorage.getItem('theme') === 'dark') {
-  body.classList.add('dark-mode');
-}
-updateDownloadIcon();
-updateThemeIcon();
-
-toggle.addEventListener('click', () => {
-  body.classList.toggle('dark-mode');
-  localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
-  updateDownloadIcon();
-  updateThemeIcon();
-});
-
-// === 3. INSTALAÇÃO DO PWA (BOTÃO SEMPRE VISÍVEL) ===
-let installPrompt = null;
-const installBtn = document.getElementById('install-btn');
-const textSpan = installBtn.querySelector('.download-text');
-const icon = installBtn.querySelector('.download-icon');
-const pwaUrl = 'https://eduplay-guide-55733.lovable.app/auth';
-
-// Captura o evento de instalação
-window.addEventListener('beforeinstallprompt', (e) => {
-  e.preventDefault();
-  installPrompt = e;
-});
-
-// Clique no botão
-installBtn.addEventListener('click', async () => {
-  if (installPrompt) {
-    // Instala como PWA
-    textSpan.textContent = 'Instalando...';
-    icon.setAttribute('data-lucide', 'loader');
+document.addEventListener('DOMContentLoaded', () => {
+  // Initialize Lucide Icons
+  if (typeof lucide !== 'undefined') {
     lucide.createIcons();
+  }
 
-    installPrompt.prompt();
-    const { outcome } = await installPrompt.userChoice;
+  // ---------- Theme Toggle (Dark / Light) ----------
+  const themeToggle = document.getElementById('themeToggle');
+  const html = document.documentElement;
 
-    if (outcome === 'accepted') {
-      textSpan.textContent = 'Instalado!';
-      setTimeout(() => {
-        installBtn.style.display = 'none';
-      }, 1500);
-    } else {
-      textSpan.textContent = 'Instalar App';
-      icon.setAttribute('data-lucide', 'download');
+  // Load saved theme or system preference
+  const savedTheme = localStorage.getItem('educonnect-theme');
+  const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const initialTheme = savedTheme || (systemDark ? 'dark' : 'light');
+
+  html.setAttribute('data-theme', initialTheme);
+
+  themeToggle?.addEventListener('click', () => {
+    const current = html.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('educonnect-theme', next);
+
+    // Re-create icons after theme change
+    if (typeof lucide !== 'undefined') {
       lucide.createIcons();
     }
-    installPrompt = null;
-  } else {
-    // Fallback: abre o app
-    textSpan.textContent = 'Abrindo App...';
-    icon.setAttribute('data-lucide', 'external-link');
-    lucide.createIcons();
-    window.open(pwaUrl, '_blank');
-    setTimeout(() => {
-      textSpan.textContent = 'Instalar App';
-      icon.setAttribute('data-lucide', 'download');
-      lucide.createIcons();
-    }, 2000);
+  });
+
+  // ---------- Mobile Menu ----------
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+
+  menuToggle?.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', isOpen);
+  });
+
+  // Close menu when clicking a link
+  navLinks?.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuToggle?.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // ---------- Carousel ----------
+  const track = document.getElementById('carouselTrack');
+  const dots = document.querySelectorAll('.dot');
+  let currentSlide = 0;
+  const totalSlides = dots.length;
+  let autoplayInterval;
+
+  function goToSlide(index) {
+    currentSlide = (index + totalSlides) % totalSlides;
+    if (track) {
+      track.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentSlide);
+    });
+  }
+
+  function nextSlide() {
+    goToSlide(currentSlide + 1);
+  }
+
+  function startAutoplay() {
+    autoplayInterval = setInterval(nextSlide, 3000);
+  }
+
+  function stopAutoplay() {
+    clearInterval(autoplayInterval);
+  }
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const index = parseInt(dot.dataset.index, 10);
+      goToSlide(index);
+      stopAutoplay();
+      startAutoplay();
+    });
+  });
+
+  // Pause on hover
+  const carousel = document.getElementById('carousel');
+  carousel?.addEventListener('mouseenter', stopAutoplay);
+  carousel?.addEventListener('mouseleave', startAutoplay);
+
+  // Start autoplay
+  startAutoplay();
+
+  // ---------- PWA Install Button ----------
+  const installBtn = document.getElementById('installBtn');
+  let deferredPrompt = null;
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    installBtn?.classList.add('available');
+  });
+
+  installBtn?.addEventListener('click', async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      console.log('Install outcome:', outcome);
+      deferredPrompt = null;
+    } else {
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches ||
+                           window.navigator.standalone === true;
+
+      if (isStandalone) {
+        alert('O aplicativo já está instalado!');
+      } else {
+        alert('Para instalar o EduConnect:\n\n• No Chrome/Edge: clique no ícone de instalação na barra de endereço\n• No Safari (iOS): toque em Compartilhar → Adicionar à Tela de Início');
+      }
+    }
+  });
+
+  window.addEventListener('appinstalled', () => {
+    deferredPrompt = null;
+    console.log('EduConnect PWA instalado com sucesso!');
+  });
+
+  // ---------- Smooth scroll for CTA ----------
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+      const target = document.querySelector(targetId);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // ---------- Header shadow on scroll ----------
+  const header = document.getElementById('header');
+  let lastScroll = 0;
+
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    if (currentScroll > 20) {
+      header?.classList.add('scrolled');
+    } else {
+      header?.classList.remove('scrolled');
+    }
+    lastScroll = currentScroll;
+  }, { passive: true });
+
+  // ---------- Intersection Observer for subtle animations ----------
+  const observerOptions = {
+    threshold: 0.12,
+    rootMargin: '0px 0px -40px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.feature-card, .process-card, .about-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+
+  // Add visible class styles dynamically
+  const style = document.createElement('style');
+  style.textContent = `
+    .feature-card.visible,
+    .process-card.visible,
+    .about-card.visible {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+  `;
+  document.head.appendChild(style);
+
+  // ---------- Service Worker Registration (basic PWA) ----------
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then(reg => console.log('Service Worker registrado:', reg.scope))
+        .catch(err => console.log('SW registration failed:', err));
+    });
   }
 });
-
-// Esconde se já instalado
-window.addEventListener('appinstalled', () => {
-  installBtn.style.display = 'none';
-});
-
-// Service Worker (opcional)
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('https://eduplay-guide-55733.lovable.app/service-worker.js')
-      .catch(() => {});
-  });
-}
-
-// === 4. INICIALIZA ÍCONES LUCIDE ===
-lucide.createIcons();
